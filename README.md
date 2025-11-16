@@ -49,3 +49,8 @@ A modern weather web application built with FastAPI, PostgreSQL, Redis, and Dock
 6. Access the application
 Open localhost:8000 in your browser
 The application is ready to use!
+
+Need a public URL?
+Check the logs for Cloudflare tunnel URL:
+   ```bash
+   docker compose logs cloudflared
