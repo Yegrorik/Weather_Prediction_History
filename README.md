@@ -25,28 +25,30 @@ A modern weather web application built with FastAPI, PostgreSQL, Redis, and Dock
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repository-url>
-   cd smd_by_group
+   git clone https://github.com/Yegrorik/Weather_Prediction_History.git
+   cd Weather_Prediction_History
 
 2. Create environment file
     ```bash
-    cp .env.sample .env
+    copy .env.sample .env
 
 3. Update the following variables in .env:
 
     WEATHER_API_KEY: Your OpenWeatherMap API key
     DB_PASSWORD: Your PostgreSQL password
-    SECRET_KEY: Your secret key for application
+    DB_USER: user data base
+    WEATHER_API_KEY: Your Api Key from OpenWeatherMap
+    DB_NAME: Name of your Data Base
 
-4. Launch with Docker
+5. Launch with Docker
     ```bash
-    docker-compose up --build
+    docker-compose build --no-cache
 
-5. Run with Docker Compose
+6. Run with Docker Compose
     ```bash
     docker compose up
 
-6. Access the application
+7. Access the application
 Open localhost:8000 in your browser
 The application is ready to use!
 
