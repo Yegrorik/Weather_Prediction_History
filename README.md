@@ -33,7 +33,7 @@ A modern weather web application built with FastAPI, PostgreSQL, Redis, and Dock
     copy .env.sample .env
 
 3. Update the following variables in .env:
-
+   ```text
     WEATHER_API_KEY: Your OpenWeatherMap API key
     DB_PASSWORD: Your PostgreSQL password
     DB_USER: user data base
