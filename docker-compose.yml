@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: db
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      REDIS_URL: redis://redis:6379/0
+      WEATHER_API_KEY: ${WEATHER_API_KEY}
+      BASE_WEATHER_URL: ${BASE_WEATHER_URL}
+      NUMBER_OF_REQUESTS: ${NUMBER_OF_REQUESTS}
+      SECRET_KEY: my_super_secret_key_12345
+      DEBUG: True
+      CACHE_TTL_MINUTES: 5
+    depends_on:
+      - db
+      - redis
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    command: tunnel --url http://web:8000
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

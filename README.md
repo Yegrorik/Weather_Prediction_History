@@ -1,0 +1,51 @@
+# Weather Application
+
+A modern weather web application built with FastAPI, PostgreSQL, Redis, and Docker. Get current weather data for any city with caching, rate limiting, and historical data tracking.
+
+## Features
+
+- 🌤️ Get current weather for any city
+- 💾 PostgreSQL database for storing request history
+- ⚡ Redis caching for improved performance
+- 🔒 Rate limiting (30 requests per minute)
+- 📊 Weather history with filtering and pagination
+- 📁 CSV export functionality
+- 🐳 Docker containerization
+- 🌍 Cloudflare tunnel for public access
+
+## Quick Start
+
+### Prerequisites
+
+- Docker
+- Docker Compose
+- OpenWeatherMap API key ([Get one here](https://openweathermap.org/api))
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <your-repository-url>
+   cd smd_by_group
+
+2. Create environment file
+    ```bash
+    cp .env.sample .env
+
+3. Update the following variables in .env:
+
+    WEATHER_API_KEY: Your OpenWeatherMap API key
+    DB_PASSWORD: Your PostgreSQL password
+    SECRET_KEY: Your secret key for application
+
+4. Launch with Docker
+    ```bash
+    docker-compose up --build
+
+5. Run with Docker Compose
+    ```bash
+    docker compose up
+
+6. Access the application
+Open localhost:8000 in your browser
+The application is ready to use!
